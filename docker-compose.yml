@@ -1,0 +1,24 @@
+version: "3"
+services:
+  bookstore:
+    image: lyotam/message-hash-store:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - message-hash-store-mysql
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8
+    ports:
+      - "33066:3306"
+    restart: always
+    networks:
+      - message-hash-store-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=toorpass
+      - MYSQL_DATABASE=message_hash_store
+
+networks:
+  message-hash-store-mysql:
