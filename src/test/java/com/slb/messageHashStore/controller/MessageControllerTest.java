@@ -28,7 +28,6 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(MessageController.class)
-@DirtiesContext(classMode= DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class MessageControllerTest {
 
     @Autowired
