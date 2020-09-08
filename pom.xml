@@ -8,7 +8,7 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.sb</groupId>
+    <groupId>com.slb</groupId>
     <artifactId>messageHashStore</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>messageHashStore</name>
