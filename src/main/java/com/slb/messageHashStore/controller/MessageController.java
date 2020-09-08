@@ -19,7 +19,8 @@ public class MessageController {
     @PostMapping("/messages")
     @ResponseStatus(HttpStatus.OK)
     public MessageDigest generateHash(@RequestBody Message message) {
-        return messageHashService.generateMessageHash(message.getMessage());
+        String digest = messageHashService.generateMessageHash(message.getMessage());
+        return MessageDigest.builder().digest(digest).build();
     }
 
     @GetMapping("/messages/{hash}")
