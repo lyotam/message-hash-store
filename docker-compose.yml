@@ -1,6 +1,6 @@
 version: "3"
 services:
-  bookstore:
+  messageHashStore:
     image: lyotam/message-hash-store:latest
     ports:
       - "8080:8080"
