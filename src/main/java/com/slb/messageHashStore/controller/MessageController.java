@@ -1,7 +1,8 @@
 package com.slb.messageHashStore.controller;
 
 import com.slb.messageHashStore.model.Message;
-import com.slb.messageHashStore.model.MessageHash;
+import com.slb.messageHashStore.model.MessageDigest;
+import com.slb.messageHashStore.service.MessageHashService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,14 @@ public class MessageController {
 
     @PostMapping("/messages")
     @ResponseStatus(HttpStatus.OK)
-    public MessageHash generateHash(@RequestBody String message) {
-        return messageHashService.generateMessageHash(message);
+    public MessageDigest generateHash(@RequestBody Message message) {
+        return messageHashService.generateMessageHash(message.getMessage());
     }
 
     @GetMapping("/messages/{hash}")
     @ResponseStatus(HttpStatus.OK)
-    public Message getHash(@PathVariable String hash) {
-        return messageHashService.retreiveMessageHash(hash);
+    public Message getMessageByHash(@PathVariable String hash) {
+        String message = messageHashService.retrieveMessage(hash);
+        return Message.builder().message(message).build();
     }
 }
