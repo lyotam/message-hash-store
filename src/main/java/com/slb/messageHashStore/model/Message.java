@@ -1,13 +1,13 @@
 package com.slb.messageHashStore.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Message {
 
     @NonNull
-    private final String message;
+    private String message;
 }
