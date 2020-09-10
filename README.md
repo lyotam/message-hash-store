@@ -7,10 +7,22 @@ message-hash-store has the following features:
 * Retrieve a message previously stored by Hash
 
 ## How to run this app:
-### Using docker-compose:
+### Run using docker-compose:
 ```
 $ cd message-hash-store
 $ docker-compose up -d
+```
+### Interact with the app:
+examples:
+```
+curl -X POST -H "Content-Type: application/json" -d '{"message": "foo"}' "http://localhost:8080/messages"
+{"digest":"2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"}
+
+curl http://localhost:8080/messages/2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+{"message":"foo"}
+
+curl http://localhost:8080/messages/aaa
+{"err_msg":"Message not found"}
 ```
 
 ## Performance & Scaling:
