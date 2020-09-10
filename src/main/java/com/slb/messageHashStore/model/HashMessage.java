@@ -1,10 +1,11 @@
 package com.slb.messageHashStore.model;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 
-@Entity(name = "hash_messages")
+@Document
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,7 +16,6 @@ public class HashMessage {
     @NonNull
     private String digest;
 
-    @Column(nullable = false)
     @NonNull
     private String message;
 }

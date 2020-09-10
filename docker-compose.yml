@@ -5,20 +5,24 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - message-hash-store-mysql
+      - message-hash-store-db
+    links:
+      - api-database
     depends_on:
-      - mysqldb
+      - api-database
 
-  mysqldb:
-    image: mysql:8
-    ports:
-      - "33066:3306"
+  api-database:
+    container_name: api-database
+    image: mongo:3.2.4
     restart: always
-    networks:
-      - message-hash-store-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=toorpass
-      - MYSQL_DATABASE=message_hash_store
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - 27017:27017
+    networks:
+      - message-hash-store-db
+    command: mongod --smallfiles --logpath=/dev/null
 
 networks:
-  message-hash-store-mysql:
+  message-hash-store-db:

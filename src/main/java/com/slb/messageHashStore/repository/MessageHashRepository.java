@@ -2,6 +2,6 @@ package com.slb.messageHashStore.repository;
 
 
 import com.slb.messageHashStore.model.HashMessage;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface MessageHashRepository extends CrudRepository<HashMessage, String> {}
+public interface MessageHashRepository extends MongoRepository<HashMessage, String> {}
